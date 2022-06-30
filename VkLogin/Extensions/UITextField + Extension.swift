@@ -8,11 +8,15 @@
 import UIKit
 
 extension UITextField {
-    convenience init(cornerRadius: CGFloat) {
+    convenience init(placeholder: String) {
         self.init()
-//        self.borderStyle = .none
-        self.layer.cornerRadius = cornerRadius
-        self.clearButtonMode = .always
+        self.placeholder = placeholder
+        self.borderStyle = .roundedRect
+//        self.backgroundColor = .systemBlue
+        self.returnKeyType = .done
+//        self.layer.cornerRadius = 5
+//        self.clipsToBounds = true
+//        self.clearButtonMode = .always
         self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

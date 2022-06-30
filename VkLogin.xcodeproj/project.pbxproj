@@ -17,6 +17,10 @@
 		3C790CAF286CE423007AA1C6 /* UITextField + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790CAE286CE423007AA1C6 /* UITextField + Extension.swift */; };
 		3C790CB3286CE43E007AA1C6 /* UILabel + Extesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790CB2286CE43E007AA1C6 /* UILabel + Extesion.swift */; };
 		3C790CB5286CE453007AA1C6 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790CB4286CE453007AA1C6 /* UIButton + Extension.swift */; };
+		3C790CBA286D61E3007AA1C6 /* Lorem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790CB6286D61E2007AA1C6 /* Lorem.swift */; };
+		3C790CBB286D61E3007AA1C6 /* LoremExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790CB7286D61E2007AA1C6 /* LoremExtension.swift */; };
+		3C790CBC286D61E3007AA1C6 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790CB8286D61E2007AA1C6 /* UIScrollViewExtension.swift */; };
+		3C790CBD286D61E3007AA1C6 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790CB9286D61E3007AA1C6 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,10 @@
 		3C790CAE286CE423007AA1C6 /* UITextField + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extension.swift"; sourceTree = "<group>"; };
 		3C790CB2286CE43E007AA1C6 /* UILabel + Extesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extesion.swift"; sourceTree = "<group>"; };
 		3C790CB4286CE453007AA1C6 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
+		3C790CB6286D61E2007AA1C6 /* Lorem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lorem.swift; sourceTree = "<group>"; };
+		3C790CB7286D61E2007AA1C6 /* LoremExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremExtension.swift; sourceTree = "<group>"; };
+		3C790CB8286D61E2007AA1C6 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
+		3C790CB9286D61E3007AA1C6 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +98,10 @@
 				3C790CAE286CE423007AA1C6 /* UITextField + Extension.swift */,
 				3C790CB2286CE43E007AA1C6 /* UILabel + Extesion.swift */,
 				3C790CB4286CE453007AA1C6 /* UIButton + Extension.swift */,
+				3C790CB6286D61E2007AA1C6 /* Lorem.swift */,
+				3C790CB7286D61E2007AA1C6 /* LoremExtension.swift */,
+				3C790CB8286D61E2007AA1C6 /* UIScrollViewExtension.swift */,
+				3C790CB9286D61E3007AA1C6 /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -170,11 +182,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C790CBB286D61E3007AA1C6 /* LoremExtension.swift in Sources */,
 				3C790C93286CDDA2007AA1C6 /* LoginViewController.swift in Sources */,
+				3C790CBD286D61E3007AA1C6 /* UIViewExtension.swift in Sources */,
 				3C790CB3286CE43E007AA1C6 /* UILabel + Extesion.swift in Sources */,
 				3C790CAF286CE423007AA1C6 /* UITextField + Extension.swift in Sources */,
 				3C790CB5286CE453007AA1C6 /* UIButton + Extension.swift in Sources */,
+				3C790CBC286D61E3007AA1C6 /* UIScrollViewExtension.swift in Sources */,
 				3C790C8F286CDDA2007AA1C6 /* AppDelegate.swift in Sources */,
+				3C790CBA286D61E3007AA1C6 /* Lorem.swift in Sources */,
 				3C790C91286CDDA2007AA1C6 /* SceneDelegate.swift in Sources */,
 				3C790CAD286CE2C7007AA1C6 /* UIStackView + Extension.swift in Sources */,
 			);

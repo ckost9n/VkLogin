@@ -21,26 +21,31 @@ class LoginViewController: UIViewController {
     private let loginLabel = UILabel(text: "Логин")
     private let passwordLabel = UILabel(text: "Пароль")
     
-    private let loginTextField = UITextField(cornerRadius: 0)
-    private let passwordTextField = UITextField(cornerRadius: 0)
+    private let loginTextField = UITextField(placeholder: "Login")
+    private let passwordTextField = UITextField(placeholder: "Password")
     
     private lazy var enterButton: UIButton = {
         let element = UIButton(type: .system)
         
-//        var configuration = UIButton.Configuration()
-//
-//        element.configuration
-        element.titleLabel?.text = "Вход"
+        var configuration = UIButton.Configuration.filled()
+        configuration.cornerStyle = .large
+//        configuration.baseForegroundColor = .blue
+        var text = AttributeContainer()
+        configuration.attributedTitle = AttributedString("Вход", attributes: text)
+
+        element.configuration = configuration
         element.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
     
     private var mainStackView = UIStackView()
+    
+    private var labelStackView = UIStackView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .white
         
         setupViews()
         
@@ -51,14 +56,17 @@ class LoginViewController: UIViewController {
     }
 
     private func setupViews() {
-        mainStackView = UIStackView(views: [
-            vkLabel,
+        labelStackView = UIStackView(views: [
             loginLabel,
             loginTextField,
             passwordLabel,
-            passwordTextField,
-            enterButton
+            passwordTextField
         ], axis: .vertical, spacing: 15)
+        mainStackView = UIStackView(views: [
+            vkLabel,
+            labelStackView,
+            enterButton
+        ], axis: .vertical, spacing: 40)
         view.addSubview(mainStackView)
         setConstraints()
     }
@@ -68,7 +76,20 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     private func setConstraints() {
         mainStackView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview().inset(0)
+            make.leading.trailing.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-75)
+        }
+        loginTextField.snp.makeConstraints { make in
+            make.width.equalTo(view.snp.width).multipliedBy(0.7)
+            make.height.equalTo(50)
+        }
+        passwordTextField.snp.makeConstraints { make in
+            make.width.equalTo(view.snp.width).multipliedBy(0.7)
+            make.height.equalTo(50)
+        }
+        enterButton.snp.makeConstraints { make in
+            make.width.equalTo(loginTextField.snp.width).multipliedBy(0.6)
+            make.height.equalTo(50)
         }
     }
 }
