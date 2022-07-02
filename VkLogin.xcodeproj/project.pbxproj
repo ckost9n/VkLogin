@@ -29,6 +29,7 @@
 		3C9BB9F22870D391005F5F27 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9F12870D391005F5F27 /* Group.swift */; };
 		3C9BB9F42870D39A005F5F27 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9F32870D39A005F5F27 /* NewsItem.swift */; };
 		3C9BB9F72870D863005F5F27 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9F62870D863005F5F27 /* FriendCell.swift */; };
+		3C9BB9FB2870DA9E005F5F27 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9FA2870DA9E005F5F27 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		3C9BB9F12870D391005F5F27 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		3C9BB9F32870D39A005F5F27 /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
 		3C9BB9F62870D863005F5F27 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		3C9BB9FA2870DA9E005F5F27 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			children = (
 				3C790C8E286CDDA2007AA1C6 /* AppDelegate.swift */,
 				3C790C90286CDDA2007AA1C6 /* SceneDelegate.swift */,
+				3C9BB9FA2870DA9E005F5F27 /* Constants.swift */,
 				3C790C97286CDDA7007AA1C6 /* Assets.xcassets */,
 				3C790C99286CDDA7007AA1C6 /* LaunchScreen.storyboard */,
 				3C790C9C286CDDA7007AA1C6 /* Info.plist */,
@@ -261,6 +264,7 @@
 				3C790CB5286CE453007AA1C6 /* UIButton + Extension.swift in Sources */,
 				3C790CBC286D61E3007AA1C6 /* UIScrollViewExtension.swift in Sources */,
 				3C790C8F286CDDA2007AA1C6 /* AppDelegate.swift in Sources */,
+				3C9BB9FB2870DA9E005F5F27 /* Constants.swift in Sources */,
 				3C790CBA286D61E3007AA1C6 /* Lorem.swift in Sources */,
 				3C790C91286CDDA2007AA1C6 /* SceneDelegate.swift in Sources */,
 				3C790CAD286CE2C7007AA1C6 /* UIStackView + Extension.swift in Sources */,
