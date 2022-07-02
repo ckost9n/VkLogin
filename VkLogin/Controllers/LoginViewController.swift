@@ -52,7 +52,10 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func enterButtonTapped() {
-        print("Tap")
+        let vc = MainTabBarCotroller()
+        vc.modalTransitionStyle = .flipHorizontal
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 
     private func setupViews() {
@@ -70,6 +73,10 @@ class LoginViewController: UIViewController {
         view.addSubview(mainStackView)
         setConstraints()
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//    }
 }
 
 
