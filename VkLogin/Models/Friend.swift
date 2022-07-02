@@ -23,13 +23,13 @@ struct Friend {
             let imagesCount = Int.random(in: 1...7)
             var images: [String] = []
             for _ in 0...imagesCount {
-                images.append(String(Int.random(in: 0...20)))
+                images.append(String(Int.random(in: 1...20)))
             }
             friends.append(
                 Friend(
                     name: Lorem.firstName,
                     surName: Lorem.lastName,
-                    avatarString: String(Int.random(in: 0...20)),
+                    avatarString: String(Int.random(in: 1...20)),
                     imagesString: images
                 )
             )

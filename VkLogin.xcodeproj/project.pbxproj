@@ -30,6 +30,7 @@
 		3C9BB9F42870D39A005F5F27 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9F32870D39A005F5F27 /* NewsItem.swift */; };
 		3C9BB9F72870D863005F5F27 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9F62870D863005F5F27 /* FriendCell.swift */; };
 		3C9BB9FB2870DA9E005F5F27 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9FA2870DA9E005F5F27 /* Constants.swift */; };
+		3C9BB9FD2870F091005F5F27 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9FC2870F090005F5F27 /* GroupCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		3C9BB9F32870D39A005F5F27 /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
 		3C9BB9F62870D863005F5F27 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		3C9BB9FA2870DA9E005F5F27 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3C9BB9FC2870F090005F5F27 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +104,9 @@
 		3C790CA2286CDEC1007AA1C6 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				3C9BB9FA2870DA9E005F5F27 /* Constants.swift */,
 				3C790C8E286CDDA2007AA1C6 /* AppDelegate.swift */,
 				3C790C90286CDDA2007AA1C6 /* SceneDelegate.swift */,
-				3C9BB9FA2870DA9E005F5F27 /* Constants.swift */,
 				3C790C97286CDDA7007AA1C6 /* Assets.xcassets */,
 				3C790C99286CDDA7007AA1C6 /* LaunchScreen.storyboard */,
 				3C790C9C286CDDA7007AA1C6 /* Info.plist */,
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				3C9BB9F62870D863005F5F27 /* FriendCell.swift */,
+				3C9BB9FC2870F090005F5F27 /* GroupCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C9BB9FD2870F091005F5F27 /* GroupCell.swift in Sources */,
 				3C790CBB286D61E3007AA1C6 /* LoremExtension.swift in Sources */,
 				3C9BB9F72870D863005F5F27 /* FriendCell.swift in Sources */,
 				3C9BB9F22870D391005F5F27 /* Group.swift in Sources */,
