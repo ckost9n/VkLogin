@@ -14,6 +14,7 @@ class NewsViewController: UIViewController {
     private let tableView: UITableView = {
         let element = UITableView()
         
+        
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -40,6 +41,7 @@ class NewsViewController: UIViewController {
         setDelegates()
         
         view.addSubview(tableView)
+//        tableView.separatorStyle = .none
 //        navigationItem.searchController = searchController
     }
     
@@ -64,6 +66,11 @@ class NewsViewController: UIViewController {
 
 extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        cell.selectionStyle = .default
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         news.count
     }
@@ -86,10 +93,11 @@ extension NewsViewController {
     
     private func setConstraints() {
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+//            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+//            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
         }
     }
     

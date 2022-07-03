@@ -9,8 +9,8 @@ import UIKit
 
 class NewsCell: UITableViewCell {
     
-    private var mainStackView = UIStackView()
     private var headerStackView = UIStackView()
+    
     private var nameAndDateStackView = UIStackView()
     
     private var avatarImageView: UIImageView = {
@@ -23,12 +23,18 @@ class NewsCell: UITableViewCell {
     private var autorNameLabel = UILabel(text: "No name")
     private var dateLabel = UILabel(text: "22.02.2022")
     private var postTextLabel = UILabel(text: "No text")
-    private let imagesView: UIView = {
-        let element = UIView()
+    private let photoImageView: UIImageView = {
+        let element = UIImageView()
         
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
+    
+    override func layoutSubviews() {
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
+        avatarImageView.clipsToBounds = true
+        
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -41,17 +47,18 @@ class NewsCell: UITableViewCell {
     
     
     func configure(newsItem: NewsItem) {
-        
-        
-        
+     
         let avatarString = "Avatars/" + newsItem.avatarString
+        let photoString = "Thumbnails/" + newsItem.imageString
         let avatar = UIImage(named: avatarString)
+        let photo = UIImage(named: photoString)
         
         avatarImageView.image = avatar
         
         autorNameLabel.text = newsItem.autorName
         postTextLabel.text = newsItem.text
-        
+//        postTextLabel.text = "jdhfkghsd"
+        photoImageView.image = photo
 
 //        var content = defaultContentConfiguration()
 //
@@ -68,25 +75,30 @@ class NewsCell: UITableViewCell {
     
     private func setupViews() {
         
-        postTextLabel.numberOfLines = 0
+        
         
         nameAndDateStackView = UIStackView(views: [
             autorNameLabel,
             dateLabel
         ], axis: .vertical, spacing: 3)
         
+        nameAndDateStackView.alignment = .leading
+        
         headerStackView = UIStackView(views: [
             avatarImageView,
             nameAndDateStackView
         ], axis: .horizontal, spacing: 10)
         
-        mainStackView = UIStackView(views: [
-            headerStackView,
-            postTextLabel,
-            imagesView
-        ], axis: .vertical, spacing: 10)
+        contentView.addSubview(headerStackView)
+        contentView.addSubview(postTextLabel)
+        contentView.addSubview(photoImageView)
         
-        addSubview(mainStackView)
+        autorNameLabel.textAlignment = .left
+        dateLabel.textAlignment = .left
+//        dateLabel.font = 
+        
+        postTextLabel.numberOfLines = 0
+         
     }
     
     required init?(coder: NSCoder) {
@@ -97,8 +109,38 @@ class NewsCell: UITableViewCell {
 
 extension NewsCell {
     private func setConstraints() {
-        mainStackView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
+        
+//        headerStackView.snp.makeConstraints { make in
+//            make.height.equalTo(50)
+//        }
+        
+        let maxWidthContainer: CGFloat = 3
+        let maxHeightContainer: CGFloat = 2
+
+        headerStackView.snp.makeConstraints { make in
+            make.height.equalTo(40)
+            make.leading.top.trailing.equalToSuperview().inset(20)
+        }
+        
+        avatarImageView.snp.makeConstraints { make in
+            make.height.width.equalTo(40)
+//            make.top.bottom.leading.equalToSuperview()
+        }
+        
+        nameAndDateStackView.snp.makeConstraints { make in
+            make.leading.equalTo(avatarImageView.snp.trailing).offset(10)
+            make.top.bottom.trailing.equalToSuperview()
+        }
+        
+        postTextLabel.snp.makeConstraints { make in
+            make.top.equalTo(headerStackView.snp.bottom).offset(5)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        photoImageView.snp.makeConstraints { make in
+            make.top.equalTo(postTextLabel.snp.bottom).offset(5)
+            make.leading.trailing.bottom.equalToSuperview().inset(20)
+            make.width.equalTo(photoImageView.snp.height).multipliedBy(maxWidthContainer/maxHeightContainer)
         }
     }
 }
