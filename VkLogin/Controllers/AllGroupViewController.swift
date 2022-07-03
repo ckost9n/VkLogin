@@ -1,13 +1,13 @@
 //
-//  GroupViewController.swift
+//  AllGroupViewController.swift
 //  VkLogin
 //
-//  Created by Konstantin on 02.07.2022.
+//  Created by Konstantin on 03.07.2022.
 //
 
 import UIKit
 
-class GroupViewController: UIViewController {
+class AllGroupViewController: UIViewController {
     
     // MARK: - Create Views
     
@@ -32,6 +32,12 @@ class GroupViewController: UIViewController {
         setupViews()
         setConstraints()
         
+        group = Group.getGroup(count: 10)
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - Setup Views
@@ -45,13 +51,6 @@ class GroupViewController: UIViewController {
         
         view.addSubview(tableView)
         navigationItem.searchController = searchController
-        
-        group = Group.getGroup(count: 10)
-        
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.tableView.reloadData()
-        }
     }
     
     private func setDelegates() {
@@ -65,7 +64,7 @@ class GroupViewController: UIViewController {
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension GroupViewController: UITableViewDelegate, UITableViewDataSource {
+extension AllGroupViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         group.count
@@ -85,7 +84,7 @@ extension GroupViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Set Constraints
 
-extension GroupViewController {
+extension AllGroupViewController {
     
     private func setConstraints() {
         tableView.snp.makeConstraints { make in
@@ -97,3 +96,4 @@ extension GroupViewController {
     }
     
 }
+

@@ -23,7 +23,6 @@
 		3C790CBD286D61E3007AA1C6 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790CB9286D61E3007AA1C6 /* UIViewExtension.swift */; };
 		3C9BB9E62870C4DC005F5F27 /* MainTabBarCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9E52870C4DC005F5F27 /* MainTabBarCotroller.swift */; };
 		3C9BB9E82870C6D3005F5F27 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9E72870C6D3005F5F27 /* FriendsViewController.swift */; };
-		3C9BB9EA2870C6E3005F5F27 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9E92870C6E3005F5F27 /* GroupViewController.swift */; };
 		3C9BB9EC2870C6F0005F5F27 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9EB2870C6F0005F5F27 /* NewsViewController.swift */; };
 		3C9BB9EF2870D364005F5F27 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9EE2870D364005F5F27 /* Friend.swift */; };
 		3C9BB9F22870D391005F5F27 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9F12870D391005F5F27 /* Group.swift */; };
@@ -31,6 +30,9 @@
 		3C9BB9F72870D863005F5F27 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9F62870D863005F5F27 /* FriendCell.swift */; };
 		3C9BB9FB2870DA9E005F5F27 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9FA2870DA9E005F5F27 /* Constants.swift */; };
 		3C9BB9FD2870F091005F5F27 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9FC2870F090005F5F27 /* GroupCell.swift */; };
+		3C9BB9FF28717229005F5F27 /* MyGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9FE28717229005F5F27 /* MyGroupViewController.swift */; };
+		3C9BBA012871728D005F5F27 /* AllGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BBA002871728D005F5F27 /* AllGroupViewController.swift */; };
+		3C9BBA032871736F005F5F27 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BBA022871736F005F5F27 /* NewsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +53,6 @@
 		3C790CB9286D61E3007AA1C6 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		3C9BB9E52870C4DC005F5F27 /* MainTabBarCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCotroller.swift; sourceTree = "<group>"; };
 		3C9BB9E72870C6D3005F5F27 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
-		3C9BB9E92870C6E3005F5F27 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		3C9BB9EB2870C6F0005F5F27 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		3C9BB9EE2870D364005F5F27 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		3C9BB9F12870D391005F5F27 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -59,6 +60,9 @@
 		3C9BB9F62870D863005F5F27 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		3C9BB9FA2870DA9E005F5F27 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3C9BB9FC2870F090005F5F27 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		3C9BB9FE28717229005F5F27 /* MyGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupViewController.swift; sourceTree = "<group>"; };
+		3C9BBA002871728D005F5F27 /* AllGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupViewController.swift; sourceTree = "<group>"; };
+		3C9BBA022871736F005F5F27 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +133,8 @@
 				3C790C92286CDDA2007AA1C6 /* LoginViewController.swift */,
 				3C9BB9E52870C4DC005F5F27 /* MainTabBarCotroller.swift */,
 				3C9BB9E72870C6D3005F5F27 /* FriendsViewController.swift */,
-				3C9BB9E92870C6E3005F5F27 /* GroupViewController.swift */,
+				3C9BB9FE28717229005F5F27 /* MyGroupViewController.swift */,
+				3C9BBA002871728D005F5F27 /* AllGroupViewController.swift */,
 				3C9BB9EB2870C6F0005F5F27 /* NewsViewController.swift */,
 			);
 			path = Controllers;
@@ -150,6 +155,7 @@
 			children = (
 				3C9BB9F62870D863005F5F27 /* FriendCell.swift */,
 				3C9BB9FC2870F090005F5F27 /* GroupCell.swift */,
+				3C9BBA022871736F005F5F27 /* NewsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -252,9 +258,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C9BB9FF28717229005F5F27 /* MyGroupViewController.swift in Sources */,
 				3C9BB9FD2870F091005F5F27 /* GroupCell.swift in Sources */,
 				3C790CBB286D61E3007AA1C6 /* LoremExtension.swift in Sources */,
 				3C9BB9F72870D863005F5F27 /* FriendCell.swift in Sources */,
+				3C9BBA032871736F005F5F27 /* NewsCell.swift in Sources */,
 				3C9BB9F22870D391005F5F27 /* Group.swift in Sources */,
 				3C790C93286CDDA2007AA1C6 /* LoginViewController.swift in Sources */,
 				3C9BB9E82870C6D3005F5F27 /* FriendsViewController.swift in Sources */,
@@ -263,7 +271,6 @@
 				3C9BB9E62870C4DC005F5F27 /* MainTabBarCotroller.swift in Sources */,
 				3C9BB9F42870D39A005F5F27 /* NewsItem.swift in Sources */,
 				3C790CB3286CE43E007AA1C6 /* UILabel + Extesion.swift in Sources */,
-				3C9BB9EA2870C6E3005F5F27 /* GroupViewController.swift in Sources */,
 				3C790CAF286CE423007AA1C6 /* UITextField + Extension.swift in Sources */,
 				3C790CB5286CE453007AA1C6 /* UIButton + Extension.swift in Sources */,
 				3C790CBC286D61E3007AA1C6 /* UIScrollViewExtension.swift in Sources */,
@@ -273,6 +280,7 @@
 				3C790C91286CDDA2007AA1C6 /* SceneDelegate.swift in Sources */,
 				3C790CAD286CE2C7007AA1C6 /* UIStackView + Extension.swift in Sources */,
 				3C9BB9EF2870D364005F5F27 /* Friend.swift in Sources */,
+				3C9BBA012871728D005F5F27 /* AllGroupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

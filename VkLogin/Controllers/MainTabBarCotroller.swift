@@ -18,7 +18,7 @@ class MainTabBarCotroller: UITabBarController {
     private func setupTabBar() {
         
         let friendsVC = createNavController(vc: FriendsViewController(), itemName: "Друзья", itemImageName: "person.3.sequence.fill")
-        let groupVC = createNavController(vc: GroupViewController(), itemName: "Группы", itemImageName: "rectangle.stack.badge.person.crop.fill")
+        let groupVC = createNavController(vc: MyGroupViewController(), itemName: "Мои группы", itemImageName: "rectangle.stack.badge.person.crop.fill")
         let newsVC = createNavController(vc: NewsViewController(), itemName: "Новости", itemImageName: "captions.bubble")
         
         viewControllers = [friendsVC, groupVC, newsVC]

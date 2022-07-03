@@ -1,14 +1,13 @@
 //
-//  FriendsViewController.swift
+//  MyGroupViewController.swift
 //  VkLogin
 //
-//  Created by Konstantin on 02.07.2022.
+//  Created by Konstantin on 03.07.2022.
 //
 
 import UIKit
-import SnapKit
 
-class FriendsViewController: UIViewController {
+class MyGroupViewController: UIViewController {
     
     // MARK: - Create Views
     
@@ -23,17 +22,17 @@ class FriendsViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var friends: [Friend] = []
+    private var group: [Group] = []
     
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupViews()
         setConstraints()
         
-        friends = Friend.getFriends(count: 30)
+        group = Group.getGroup(count: 10)
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -45,13 +44,13 @@ class FriendsViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = .white
-        title = "Друзья"
+        title = "Группы"
         
-        tableView.register(FriendCell.self, forCellReuseIdentifier: Constants.friendCell.rawValue)
+        tableView.register(GroupCell.self, forCellReuseIdentifier: Constants.groupCell.rawValue)
         setDelegates()
         
         view.addSubview(tableView)
-        navigationItem.searchController = searchController   
+        navigationItem.searchController = searchController
     }
     
     private func setDelegates() {
@@ -59,21 +58,23 @@ class FriendsViewController: UIViewController {
         tableView.dataSource = self
     }
 
+    
+
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
+extension MyGroupViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        friends.count
+        group.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.friendCell.rawValue, for: indexPath) as! FriendCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.groupCell.rawValue, for: indexPath) as! GroupCell
         
-        let friend = friends[indexPath.row]
-        cell.configure(friend: friend)
+        let model = group[indexPath.row]
+        cell.configure(group: model)
         
         return cell
     }
@@ -83,7 +84,7 @@ extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Set Constraints
 
-extension FriendsViewController {
+extension MyGroupViewController {
     
     private func setConstraints() {
         tableView.snp.makeConstraints { make in
@@ -95,3 +96,4 @@ extension FriendsViewController {
     }
     
 }
+

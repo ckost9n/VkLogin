@@ -8,14 +8,45 @@
 import UIKit
 
 class NewsViewController: UIViewController {
+    
+    private var news: [NewsItem] = []
+    
+    private let tableView: UITableView = {
+        let element = UITableView()
+        
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
-        title = "Новости"
+        setupViews()
+        setConstraints()
+        
+        news = NewsItem.getNews(count: 30)
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+        }
     }
     
+    private func setupViews() {
+        view.backgroundColor = .white
+        title = "Новости"
+        
+        tableView.register(NewsCell.self, forCellReuseIdentifier: Constants.newsCell.rawValue)
+        setDelegates()
+        
+        view.addSubview(tableView)
+//        navigationItem.searchController = searchController
+    }
+    
+    private func setDelegates() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
 
     /*
     // MARK: - Navigation
@@ -28,3 +59,39 @@ class NewsViewController: UIViewController {
     */
 
 }
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
+extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        news.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.newsCell.rawValue, for: indexPath) as! NewsCell
+        
+        let model = news[indexPath.row]
+        cell.configure(newsItem: model)
+        
+        return cell
+    }
+    
+    
+}
+
+// MARK: - Set Constraints
+
+extension NewsViewController {
+    
+    private func setConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+        }
+    }
+    
+}
+
