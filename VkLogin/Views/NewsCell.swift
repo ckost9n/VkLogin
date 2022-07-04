@@ -95,7 +95,7 @@ class NewsCell: UITableViewCell {
         
         autorNameLabel.textAlignment = .left
         dateLabel.textAlignment = .left
-//        dateLabel.font = 
+//        dateLabel.font =
         
         postTextLabel.numberOfLines = 0
          

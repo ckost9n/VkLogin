@@ -41,7 +41,7 @@ class NewsViewController: UIViewController {
         setDelegates()
         
         view.addSubview(tableView)
-//        tableView.separatorStyle = .none
+        tableView.separatorStyle = .none
 //        navigationItem.searchController = searchController
     }
     

@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol GetCurrentGroupProtocol {
+    func getCurrentGroup(currentGroup: Group)
+}
+
+
 class AllGroupViewController: UIViewController {
     
     // MARK: - Create Views
@@ -23,6 +28,9 @@ class AllGroupViewController: UIViewController {
     // MARK: - Properties
     
     private var group: [Group] = []
+    
+    var delegate: GetCurrentGroupProtocol?
+    
     
     // MARK: - Life Cycle
 
@@ -65,6 +73,17 @@ class AllGroupViewController: UIViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension AllGroupViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let currentGroup = group[indexPath.row]
+        
+        delegate?.getCurrentGroup(currentGroup: currentGroup)
+        
+        navigationController?.popToRootViewController(animated: true)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         group.count

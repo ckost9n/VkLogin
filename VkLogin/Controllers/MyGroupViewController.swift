@@ -11,6 +11,13 @@ class MyGroupViewController: UIViewController {
     
     // MARK: - Create Views
     
+    private lazy var addNewGroup: UIBarButtonItem = {
+        let element = UIBarButtonItem(systemItem: .add)
+        element.target = self
+        element.action = #selector(addNewGroupTapped)
+        return element
+    }()
+    
     private let searchController = UISearchController()
     
     private let tableView: UITableView = {
@@ -19,6 +26,7 @@ class MyGroupViewController: UIViewController {
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
+    
     
     // MARK: - Properties
     
@@ -32,12 +40,12 @@ class MyGroupViewController: UIViewController {
         setupViews()
         setConstraints()
         
-        group = Group.getGroup(count: 10)
-        
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.tableView.reloadData()
-        }
+//        group = Group.getGroup(count: 10)
+//
+//        DispatchQueue.main.async { [weak self] in
+//            guard let self = self else { return }
+//            self.tableView.reloadData()
+//        }
     }
     
     // MARK: - Setup Views
@@ -51,20 +59,50 @@ class MyGroupViewController: UIViewController {
         
         view.addSubview(tableView)
         navigationItem.searchController = searchController
+        
+        navigationItem.rightBarButtonItem = addNewGroup
     }
     
     private func setDelegates() {
         tableView.delegate = self
         tableView.dataSource = self
+        
     }
 
-    
+    @objc private func addNewGroupTapped() {
+        
+        let destinationVC = AllGroupViewController() 
+        destinationVC.modalTransitionStyle = .coverVertical
+        destinationVC.modalPresentationStyle = .fullScreen
+        destinationVC.delegate = self
+        
+        navigationController?.pushViewController(destinationVC, animated: true)
+    }
 
+}
+
+// MARK: - GetCurrentGroupProtocol
+
+extension MyGroupViewController: GetCurrentGroupProtocol {
+    
+    func getCurrentGroup(currentGroup: Group) {
+        group.append(currentGroup)
+        print(group)
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+      
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension MyGroupViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         group.count

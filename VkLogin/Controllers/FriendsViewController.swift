@@ -65,6 +65,20 @@ class FriendsViewController: UIViewController {
 
 extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        tableView.deselectRow(at: indexPath, animated: true)
+        let currentFriend = friends[indexPath.row]
+        
+        let photosVC = PhotosViewController()
+        photosVC.modalTransitionStyle = .crossDissolve
+        photosVC.modalPresentationStyle = .fullScreen
+        photosVC.photosString = currentFriend.imagesString
+        photosVC.title = currentFriend.fullName
+        
+        navigationController?.pushViewController(photosVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         friends.count
     }
