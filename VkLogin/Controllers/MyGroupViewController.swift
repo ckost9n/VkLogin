@@ -87,7 +87,6 @@ extension MyGroupViewController: GetCurrentGroupProtocol {
     
     func getCurrentGroup(currentGroup: Group) {
         group.append(currentGroup)
-        print(group)
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }

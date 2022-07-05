@@ -24,6 +24,9 @@ class FriendsViewController: UIViewController {
     // MARK: - Properties
     
     private var friends: [Friend] = []
+//    private var friends
+    
+    private var networkService = VkNetworkService()
     
     // MARK: - Life Cycle
 
@@ -33,12 +36,30 @@ class FriendsViewController: UIViewController {
         setupViews()
         setConstraints()
         
-        friends = Friend.getFriends(count: 30)
+//        friends = FriendFake.getFriends(count: 30)
         
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.tableView.reloadData()
+//        networkService.getData(metod: .friends)
+        networkService.getData(metod: .friends) { friends in
+            self.friends = friends
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.tableView.reloadData()
+            }
+            
         }
+        
+//        detaFetcherService.getData(method: .friends) { friendItem in
+//            print(friendItem)
+//            guard let friends = friendItem?.response.items else { return }
+//            print(friends[0].firstName)
+//            self.friends = friends
+//
+//            DispatchQueue.main.async { [weak self] in
+//                guard let self = self else { return }
+//                self.tableView.reloadData()
+//            }
+//        }
     }
     
     // MARK: - Setup Views
@@ -73,8 +94,8 @@ extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
         let photosVC = PhotosViewController()
         photosVC.modalTransitionStyle = .crossDissolve
         photosVC.modalPresentationStyle = .fullScreen
-        photosVC.photosString = currentFriend.imagesString
-        photosVC.title = currentFriend.fullName
+//        photosVC.photosString = currentFriend.imagesString
+        photosVC.title = currentFriend.firstName + " " + currentFriend.lastName
         
         navigationController?.pushViewController(photosVC, animated: true)
     }
