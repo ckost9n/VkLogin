@@ -30,7 +30,8 @@ class MyGroupViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var group: [Group] = []
+    private var groups: [Group] = []
+    private var networkService = VkNetworkService()
     
     // MARK: - Life Cycle
 
@@ -40,12 +41,17 @@ class MyGroupViewController: UIViewController {
         setupViews()
         setConstraints()
         
-//        group = Group.getGroup(count: 10)
-//
-//        DispatchQueue.main.async { [weak self] in
-//            guard let self = self else { return }
-//            self.tableView.reloadData()
-//        }
+        networkService.getData(metod: .groups) { [weak self] (groups: [Group]) in
+            guard let self = self else { return }
+
+            self.groups = groups
+
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.tableView.reloadData()
+            }
+        }
+        
     }
     
     // MARK: - Setup Views
@@ -84,14 +90,15 @@ class MyGroupViewController: UIViewController {
 // MARK: - GetCurrentGroupProtocol
 
 extension MyGroupViewController: GetCurrentGroupProtocol {
-    
     func getCurrentGroup(currentGroup: Group) {
-        group.append(currentGroup)
-        DispatchQueue.main.async { [weak self] in
-            self?.tableView.reloadData()
-        }
+        
     }
-      
+    
+    func getCurrentGroup(currentGroup: GroupFake) {
+        
+    }
+    
+    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -104,13 +111,13 @@ extension MyGroupViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        group.count
+        groups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.groupCell.rawValue, for: indexPath) as! GroupCell
         
-        let model = group[indexPath.row]
+        let model = groups[indexPath.row]
         cell.configure(group: model)
         
         return cell

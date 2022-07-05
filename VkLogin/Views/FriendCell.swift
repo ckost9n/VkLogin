@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FriendCell: UITableViewCell {
     
-    let avatarImageView = UIImageView()
+    
     let avatarWidth: CGFloat = 50
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -17,18 +18,17 @@ class FriendCell: UITableViewCell {
     }
     
     func configure(friend: Friend) {
+        let avatarImageView = UIImageView()
         
-//        let avatarString = "Avatars/" + friend.avatarString
-//        let avatar = UIImage(named: avatarString) ?? UIImage(systemName: "person.crop.circle.badge.xmark")
-        avatarImageView.downloaded(from: friend.photo50)
-       
-        let avatar = avatarImageView.image
+        if let urlAvatar = URL(string: friend.photo50) {
+            let resource = ImageResource(downloadURL: urlAvatar)
+            avatarImageView.kf.setImage(with: resource)
+        }
 
         var content = defaultContentConfiguration()
         
         content.text = friend.firstName + " " + friend.lastName
-//        content.text = friend.fullName
-        content.image = avatar
+        content.image = avatarImageView.image
         
         content.imageProperties.maximumSize.width = avatarWidth
         content.imageProperties.maximumSize.height = avatarWidth

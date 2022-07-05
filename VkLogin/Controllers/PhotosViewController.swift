@@ -9,7 +9,9 @@ import UIKit
 
 class PhotosViewController: UIViewController {
     
-    var photosString: [String]?
+//    var photosString: [String]?
+    var userId: Int!
+    var photos: [Photo] = []
     
     let itemsPerRow: CGFloat = 2
     let sectionInserts = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
@@ -24,12 +26,26 @@ class PhotosViewController: UIViewController {
         return element
     }()
     
-    
+    private var networkService = VkNetworkService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setConstraints()
+        
+        let idStr = String(userId)
+        
+        networkService.getData(metod: .photos, userId: idStr) { [weak self] (photo: [Photo]) in
+            guard let self = self else { return }
+//            guard let friends = friendItem.response.items else { return }
+
+            self.photos = photo
+//
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.photosCollectionView.reloadData()
+            }
+        }
     }
     
 
@@ -75,20 +91,21 @@ extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSo
         sliderVC.modalTransitionStyle = .partialCurl
         sliderVC.indexPath = indexPath
         sliderVC.title = title
-        sliderVC.imagesString = photosString
+        sliderVC.photos = photos
+//        sliderVC.imagesString = photosString
         
         navigationController?.pushViewController(sliderVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photosString?.count ?? 0
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = photosCollectionView.dequeueReusableCell(withReuseIdentifier: Constants.photoCell.rawValue, for: indexPath) as! PhotosCell
         
-        guard let model = photosString?[indexPath.row] else { return UICollectionViewCell() }
-        cell.configure(photoString: model)
+        let model = photos[indexPath.row]
+        cell.configure(photo: model)
         
         return cell
     }

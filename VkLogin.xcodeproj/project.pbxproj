@@ -11,6 +11,8 @@
 		3C3ED91828741612001A6865 /* VKAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3ED91728741612001A6865 /* VKAuthViewController.swift */; };
 		3C3ED91A2874326B001A6865 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3ED9192874326B001A6865 /* UIImage + Extension.swift */; };
 		3C3ED91C2874391E001A6865 /* VkNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3ED91B2874391E001A6865 /* VkNetworkService.swift */; };
+		3C3ED91F2874633B001A6865 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3C3ED91E2874633B001A6865 /* Kingfisher */; };
+		3C3ED921287468CF001A6865 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3ED920287468CF001A6865 /* Photo.swift */; };
 		3C790C8F286CDDA2007AA1C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790C8E286CDDA2007AA1C6 /* AppDelegate.swift */; };
 		3C790C91286CDDA2007AA1C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790C90286CDDA2007AA1C6 /* SceneDelegate.swift */; };
 		3C790C98286CDDA7007AA1C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C790C97286CDDA7007AA1C6 /* Assets.xcassets */; };
@@ -27,7 +29,7 @@
 		3C9BB9E62870C4DC005F5F27 /* MainTabBarCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9E52870C4DC005F5F27 /* MainTabBarCotroller.swift */; };
 		3C9BB9E82870C6D3005F5F27 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9E72870C6D3005F5F27 /* FriendsViewController.swift */; };
 		3C9BB9EC2870C6F0005F5F27 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9EB2870C6F0005F5F27 /* NewsViewController.swift */; };
-		3C9BB9EF2870D364005F5F27 /* FriendFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9EE2870D364005F5F27 /* FriendFake.swift */; };
+		3C9BB9EF2870D364005F5F27 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9EE2870D364005F5F27 /* Friend.swift */; };
 		3C9BB9F22870D391005F5F27 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9F12870D391005F5F27 /* Group.swift */; };
 		3C9BB9F42870D39A005F5F27 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9F32870D39A005F5F27 /* NewsItem.swift */; };
 		3C9BB9F72870D863005F5F27 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BB9F62870D863005F5F27 /* FriendCell.swift */; };
@@ -46,6 +48,7 @@
 		3C3ED91728741612001A6865 /* VKAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAuthViewController.swift; sourceTree = "<group>"; };
 		3C3ED9192874326B001A6865 /* UIImage + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		3C3ED91B2874391E001A6865 /* VkNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkNetworkService.swift; sourceTree = "<group>"; };
+		3C3ED920287468CF001A6865 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		3C790C8B286CDDA2007AA1C6 /* VkLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C790C8E286CDDA2007AA1C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C790C90286CDDA2007AA1C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +66,7 @@
 		3C9BB9E52870C4DC005F5F27 /* MainTabBarCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCotroller.swift; sourceTree = "<group>"; };
 		3C9BB9E72870C6D3005F5F27 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		3C9BB9EB2870C6F0005F5F27 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
-		3C9BB9EE2870D364005F5F27 /* FriendFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendFake.swift; sourceTree = "<group>"; };
+		3C9BB9EE2870D364005F5F27 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		3C9BB9F12870D391005F5F27 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		3C9BB9F32870D39A005F5F27 /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
 		3C9BB9F62870D863005F5F27 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C3ED91F2874633B001A6865 /* Kingfisher in Frameworks */,
 				3C790CAA286CE0BD007AA1C6 /* SnapKit in Frameworks */,
 				3C3ED91628741466001A6865 /* Alamofire in Frameworks */,
 			);
@@ -168,8 +172,9 @@
 		3C9BB9F02870D370005F5F27 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3C9BB9EE2870D364005F5F27 /* FriendFake.swift */,
+				3C9BB9EE2870D364005F5F27 /* Friend.swift */,
 				3C9BB9F12870D391005F5F27 /* Group.swift */,
+				3C3ED920287468CF001A6865 /* Photo.swift */,
 				3C9BB9F32870D39A005F5F27 /* NewsItem.swift */,
 			);
 			path = Models;
@@ -229,6 +234,7 @@
 			packageProductDependencies = (
 				3C790CA9286CE0BD007AA1C6 /* SnapKit */,
 				3C3ED91528741466001A6865 /* Alamofire */,
+				3C3ED91E2874633B001A6865 /* Kingfisher */,
 			);
 			productName = VkLogin;
 			productReference = 3C790C8B286CDDA2007AA1C6 /* VkLogin.app */;
@@ -261,6 +267,7 @@
 			packageReferences = (
 				3C790CA8286CE0BD007AA1C6 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				3C3ED91428741466001A6865 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3C3ED91D2874633B001A6865 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 3C790C8C286CDDA2007AA1C6 /* Products */;
 			projectDirPath = "";
@@ -312,10 +319,11 @@
 				3C790C8F286CDDA2007AA1C6 /* AppDelegate.swift in Sources */,
 				3C9BB9FB2870DA9E005F5F27 /* Constants.swift in Sources */,
 				3C790CBA286D61E3007AA1C6 /* Lorem.swift in Sources */,
+				3C3ED921287468CF001A6865 /* Photo.swift in Sources */,
 				3C790C91286CDDA2007AA1C6 /* SceneDelegate.swift in Sources */,
 				3C790CAD286CE2C7007AA1C6 /* UIStackView + Extension.swift in Sources */,
 				3C3ED91A2874326B001A6865 /* UIImage + Extension.swift in Sources */,
-				3C9BB9EF2870D364005F5F27 /* FriendFake.swift in Sources */,
+				3C9BB9EF2870D364005F5F27 /* Friend.swift in Sources */,
 				3C9BBA012871728D005F5F27 /* AllGroupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,6 +542,14 @@
 				kind = branch;
 			};
 		};
+		3C3ED91D2874633B001A6865 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		3C790CA8286CE0BD007AA1C6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -549,6 +565,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3C3ED91428741466001A6865 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		3C3ED91E2874633B001A6865 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C3ED91D2874633B001A6865 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		3C790CA9286CE0BD007AA1C6 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

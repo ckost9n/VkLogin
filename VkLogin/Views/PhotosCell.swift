@@ -12,7 +12,7 @@ class PhotosCell: UICollectionViewCell {
     
     private let photoImageView: UIImageView = {
         let element = UIImageView()
-        element.contentMode = .scaleAspectFill
+        element.contentMode = .scaleToFill
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -26,10 +26,19 @@ class PhotosCell: UICollectionViewCell {
         }
     }
     
-    func configure(photoString: String) {
-        let image = UIImage(named: "Avatars/" + photoString)
+    func configure(photo: Photo) {
         
-        photoImageView.image = image
+        let stringPhoto = photo.sizes
+        let photoSize = stringPhoto.sorted { $0.height > $1.height }
+        
+        guard let photo = photoSize.first?.url else { return }
+        
+        DispatchQueue.main.async { [weak self] in
+            if let url = URL(string: photo) {
+                self?.photoImageView.kf.setImage(with: url)
+            }
+        }
+ 
     }
     
     required init?(coder: NSCoder) {

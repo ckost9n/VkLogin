@@ -12,6 +12,7 @@ class SliderViewController: UIViewController {
     
     var indexPath: IndexPath!
     var imagesString: [String]!
+    var photos: [Photo]?
     
     private let photoImageView: UIImageView = {
         let element = UIImageView()
@@ -86,15 +87,16 @@ extension SliderViewController: UICollectionViewDelegateFlowLayout {
 extension SliderViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imagesString?.count ?? 0
+        return photos?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = photosCollectionView.dequeueReusableCell(withReuseIdentifier: Constants.sliderPhotoCell.rawValue, for: indexPath) as! SliderPhotoCell
         
-        guard let model = imagesString?[indexPath.row] else { return UICollectionViewCell() }
-        cell.configure(photoString: model)
+//        guard let model = imagesString?[indexPath.row] else { return UICollectionViewCell() }
+        guard let model = photos?[indexPath.row] else { return UICollectionViewCell() }
+        cell.configure(photo: model)
         
         return cell
     }

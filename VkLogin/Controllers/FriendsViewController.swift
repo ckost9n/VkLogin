@@ -36,30 +36,18 @@ class FriendsViewController: UIViewController {
         setupViews()
         setConstraints()
         
-//        friends = FriendFake.getFriends(count: 30)
-        
-//        networkService.getData(metod: .friends)
-        networkService.getData(metod: .friends) { friends in
+        networkService.getData(metod: .friends) { [weak self] (friends: [Friend]) in
+            guard let self = self else { return }
+//            guard let friends = friendItem.response.items else { return }
+
             self.friends = friends
-            
+
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.tableView.reloadData()
             }
-            
         }
-        
-//        detaFetcherService.getData(method: .friends) { friendItem in
-//            print(friendItem)
-//            guard let friends = friendItem?.response.items else { return }
-//            print(friends[0].firstName)
-//            self.friends = friends
-//
-//            DispatchQueue.main.async { [weak self] in
-//                guard let self = self else { return }
-//                self.tableView.reloadData()
-//            }
-//        }
+
     }
     
     // MARK: - Setup Views
@@ -94,6 +82,7 @@ extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
         let photosVC = PhotosViewController()
         photosVC.modalTransitionStyle = .crossDissolve
         photosVC.modalPresentationStyle = .fullScreen
+        photosVC.userId = currentFriend.id
 //        photosVC.photosString = currentFriend.imagesString
         photosVC.title = currentFriend.firstName + " " + currentFriend.lastName
         

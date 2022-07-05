@@ -8,7 +8,7 @@
 import UIKit
 
 protocol GetCurrentGroupProtocol {
-    func getCurrentGroup(currentGroup: Group)
+    func getCurrentGroup(currentGroup: GroupFake)
 }
 
 
@@ -27,7 +27,8 @@ class AllGroupViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var group: [Group] = []
+    private var group: [GroupFake] = []
+    private var groups: [Group] = []
     
     var delegate: GetCurrentGroupProtocol?
     
@@ -40,7 +41,7 @@ class AllGroupViewController: UIViewController {
         setupViews()
         setConstraints()
         
-        group = Group.getGroup(count: 10)
+        group = GroupFake.getGroup(count: 10)
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -86,13 +87,13 @@ extension AllGroupViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        group.count
+        groups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.groupCell.rawValue, for: indexPath) as! GroupCell
         
-        let model = group[indexPath.row]
+        let model = groups[indexPath.row]
         cell.configure(group: model)
         
         return cell

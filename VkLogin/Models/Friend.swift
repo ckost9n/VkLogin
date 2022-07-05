@@ -8,14 +8,28 @@
 import Foundation
 
 // MARK: - FriendItem
-struct FriendItem: Codable {
-    let response: Response
-}
+//struct VkResponse: Codable {
+//    let response: Response
+//}
 
 // MARK: - Response
-struct Response: Codable {
+struct VkResponse<T: Decodable>: Decodable {
     let count: Int
-    let items: [Friend]
+    let items: [T]
+    
+    enum CodingKeys: String, CodingKey {
+        case response
+        case count
+        case items
+    }
+    
+    init(from decoder: Decoder) throws {
+        let topContainer = try decoder.container(keyedBy: CodingKeys.self)
+        let conteiner = try topContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .response)
+        
+        self.count = try conteiner.decode(Int.self, forKey: .count)
+        self.items = try conteiner.decode([T].self, forKey: .items)
+    }
 }
 
 // MARK: - Item

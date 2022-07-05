@@ -43,10 +43,16 @@ class SliderPhotoCell: UICollectionViewCell, UIScrollViewDelegate {
         }
     }
     
-    func configure(photoString: String) {
-        let image = UIImage(named: "Avatars/" + photoString)
+    func configure(photo: Photo) {
+        let stringPhoto = photo.sizes
+        let photoSize = stringPhoto.sorted { $0.height > $1.height }
         
-        photoImageView.image = image
+        guard let photo = photoSize.first?.url else { return }
+        
+        if let url = URL(string: photo) {
+            photoImageView.kf.setImage(with: url)
+        }
+        
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
