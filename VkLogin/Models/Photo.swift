@@ -7,17 +7,6 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct PhotoItem: Codable {
-    let response: ResponsePhoto
-}
-
-// MARK: - Response
-struct ResponsePhoto: Codable {
-    let count: Int
-    let items: [Photo]
-}
-
 // MARK: - Item
 struct Photo: Codable {
     let albumID, date, id, ownerID: Int

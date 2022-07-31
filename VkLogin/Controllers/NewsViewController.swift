@@ -11,13 +11,7 @@ class NewsViewController: UIViewController {
     
     private var news: [NewsItem] = []
     
-    private let tableView: UITableView = {
-        let element = UITableView()
-        
-        
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
+    private var tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +30,13 @@ class NewsViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = .white
         title = "Новости"
-        
-        tableView.register(NewsCell.self, forCellReuseIdentifier: Constants.newsCell.rawValue)
+        tableView = UITableView(frame: view.bounds, style: .insetGrouped)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.newsCell.rawValue)
         setDelegates()
         
         view.addSubview(tableView)
         tableView.separatorStyle = .none
+        tableView.tableHeaderView = NewsHeaderView()
 //        navigationItem.searchController = searchController
     }
     
@@ -71,15 +66,44 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .default
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = NewsHeaderView()
+        header.configure(model: news[section])
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = NewsFooterView()
+//        footer.configure(model: news[section])
+        return footer
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return news.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        news.count
+        return news[section].count
+//        news.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.newsCell.rawValue, for: indexPath) as! NewsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.newsCell.rawValue, for: indexPath)
+        var content = cell.defaultContentConfiguration()
         
-        let model = news[indexPath.row]
-        cell.configure(newsItem: model)
+        let model = news[indexPath.section]
+        
+        if indexPath.row == 0 {
+            if model.text != nil {
+                content.text = model.text
+            } else {
+                content.image = UIImage(named: "Thumbnails/" + (model.imageString ?? "0"))
+            }
+        } else {
+            content.image = UIImage(named: "Thumbnails/" + (model.imageString ?? "0"))
+        }
+        
+        cell.contentConfiguration = content
         
         return cell
     }

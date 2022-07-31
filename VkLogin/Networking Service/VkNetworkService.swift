@@ -21,7 +21,7 @@ class VkNetworkService {
         
         let urlPath = "https://api.vk.com/method/" + metod.rawValue
         var parameters: Parameters = [
-            "access_token": Constants.acssestoken.rawValue,
+            "access_token": Constants.token,
             "v": "5.131"
         ]
         

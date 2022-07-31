@@ -7,11 +7,6 @@
 
 import Foundation
 
-// MARK: - FriendItem
-//struct VkResponse: Codable {
-//    let response: Response
-//}
-
 // MARK: - Response
 struct VkResponse<T: Decodable>: Decodable {
     let count: Int

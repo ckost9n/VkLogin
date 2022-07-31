@@ -78,7 +78,8 @@ extension VKAuthViewController: WKNavigationDelegate {
                 dict[key] = value
                 return dict
             }
-        guard let _ = params["access_token"] else { return }
+        guard let token = params["access_token"] else { return }
+        Constants.token = token
 //        print("my token = \(token)")
         decisionHandler(.cancel)
         

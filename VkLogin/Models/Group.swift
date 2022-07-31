@@ -7,17 +7,6 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct GroupItem: Codable {
-    let response: ResponseGroup
-}
-
-// MARK: - Response
-struct ResponseGroup: Codable {
-    let count: Int
-    let items: [Group]
-}
-
 // MARK: - Item
 struct Group: Codable {
     let id: Int
