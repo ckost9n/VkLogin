@@ -36,7 +36,6 @@ class NewsViewController: UIViewController {
         
         view.addSubview(tableView)
         tableView.separatorStyle = .none
-        tableView.tableHeaderView = NewsHeaderView()
 //        navigationItem.searchController = searchController
     }
     
@@ -44,16 +43,6 @@ class NewsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -63,7 +52,7 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        cell.selectionStyle = .default
+        cell.selectionStyle = .none
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -118,10 +107,6 @@ extension NewsViewController {
     private func setConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-//            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-//            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
         }
     }
     

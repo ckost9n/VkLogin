@@ -26,7 +26,7 @@ class NewsFooterView: UIView {
         element.tintColor = .darkGray
         element.setImage(UIImage(systemName: "bubble.left"), for: .normal)
         element.setTitle("3", for: .normal)
-        element.addTarget(self, action: #selector(likesButtonTapped), for: .touchUpInside)
+        element.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
         return element
     }()
     
@@ -35,7 +35,7 @@ class NewsFooterView: UIView {
         element.tintColor = .darkGray
         element.setImage(UIImage(systemName: "arrowshape.turn.up.right"), for: .normal)
         element.setTitle("2", for: .normal)
-        element.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
+        element.addTarget(self, action: #selector(repostButtonTapped), for: .touchUpInside)
         return element
     }()
     
