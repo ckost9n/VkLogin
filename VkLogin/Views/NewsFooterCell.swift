@@ -1,5 +1,5 @@
 //
-//  NewsFooterView.swift
+//  NewsFooterCell.swift
 //  VkLogin
 //
 //  Created by Konstantin on 01.08.2022.
@@ -7,8 +7,7 @@
 
 import UIKit
 
-
-class NewsFooterView: UIView {
+class NewsFooterCell: UITableViewCell {
     
     private var mainStackView = UIStackView()
     
@@ -47,9 +46,15 @@ class NewsFooterView: UIView {
         return element
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//
+//        setupViews()
+//        setConstraints()
+//    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setConstraints()
     }
@@ -82,7 +87,7 @@ class NewsFooterView: UIView {
     
 }
 
-extension NewsFooterView {
+extension NewsFooterCell {
     
     private func setConstraints() {
         mainStackView.snp.makeConstraints { make in

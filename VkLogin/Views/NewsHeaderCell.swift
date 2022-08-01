@@ -1,5 +1,5 @@
 //
-//  NewsHeaderView.swift
+//  NewsHeaderCell.swift
 //  VkLogin
 //
 //  Created by Konstantin on 31.07.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewsHeaderView: UIView {
+class NewsHeaderCell: UITableViewCell {
     
     private var heightElement = CGFloat(40)
     
@@ -23,8 +23,14 @@ class NewsHeaderView: UIView {
     private var autorNameLabel = UILabel(text: "No name")
     private var dateLabel = UILabel(text: "22.02.2022")
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        setupViews()
+//        setConstraints()
+//    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setConstraints()
     }
@@ -66,7 +72,7 @@ class NewsHeaderView: UIView {
     
 }
 
-extension NewsHeaderView {
+extension NewsHeaderCell {
     private func setConstraints() {
         
         avatarImageView.snp.makeConstraints { make in

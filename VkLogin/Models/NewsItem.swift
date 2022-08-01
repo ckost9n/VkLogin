@@ -24,17 +24,19 @@ struct NewsItem {
 //    let likeCount: Int
     
     var count: Int {
-//        var myCount = 0
-//        if text != nil { myCount += 1 }
-//        if imageString != nil { myCount += 1 }
-//        return myCount
-        return 2
+        var myCount = 2
+        if text != nil { myCount += 1 }
+        if imageString != nil { myCount += 1 }
+        return myCount
+//        return 4
     }
     
     func getInfoCell(index: Int) -> ItemsOfCell? {
         switch index {
-        case 0: return text != nil ? .text : .image
-        case 1: return imageString != nil ? .image : .bottom
+        case 0: return .top
+        case 1: return text != nil ? .text : .image
+        case 2: return imageString != nil ? .image : .bottom
+        case 3: return .bottom
         default: return nil
         }
     }
