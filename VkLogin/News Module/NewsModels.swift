@@ -13,17 +13,17 @@ enum News {
   enum Model {
     struct Request {
       enum RequestType {
-        case some
+        case getNews
       }
     }
     struct Response {
       enum ResponseType {
-        case some
+          case presentNews
       }
     }
     struct ViewModel {
       enum ViewModelData {
-        case some
+        case displayNews(news: [NewsItem])
       }
     }
   }

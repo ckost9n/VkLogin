@@ -14,9 +14,15 @@ protocol NewsPresentationLogic {
 
 class NewsPresenter: NewsPresentationLogic {
   weak var viewController: NewsDisplayLogic?
+    private var news: [NewsItem] = []
   
   func presentData(response: News.Model.Response.ResponseType) {
-  
+      
+      switch response {
+      case .presentNews:
+          news = NewsItem.getNews(count: 30)
+          viewController?.displayData(viewModel: .displayNews(news: news))
+      }
   }
   
 }
