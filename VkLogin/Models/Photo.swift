@@ -29,7 +29,7 @@ struct Photo: Codable {
 struct Size: Codable {
     let height: Int
     let url: String
-//    let type: TypeEnum
+    let type: String
     let width: Int
 }
 

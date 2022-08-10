@@ -9,14 +9,14 @@ import Foundation
 
 // MARK: - NewsFeed
 struct NewsFeed: Decodable {
-    let response: Response
+    let response: ResponseData
 }
 
 // MARK: - Response
-struct Response: Codable {
-    let items: [Item]
-    let profiles: [Profile]
-    let groups: [Group]
+struct ResponseData: Codable {
+    let items: [NewsItemNew]
+    let profiles: [ProfileItem]
+    let groups: [GroupItem]
     let nextFrom: String
 
     enum CodingKeys: String, CodingKey {
@@ -41,6 +41,7 @@ struct NewsItemNew: Codable {
     let likes: CountebleItem?
     let reposts : CountebleItem?
     let views: CountebleItem?
+    let attachments: [Attachment]?
     
     let imageString: String?
     
@@ -50,6 +51,71 @@ struct NewsItemNew: Codable {
         case text, date
         case comments, likes, reposts, views
         case imageString
+        case attachments
+    }
+}
+
+struct Attachment: Codable {
+    let photo: PhotoItem?
+}
+
+struct PhotoItem: Codable {
+    let sizes: [Size]
+    var height: Int {
+        return getProperSize().height
+    }
+    var width: Int {
+        return getProperSize().width
+    }
+    var url: String {
+        return getProperSize().url
+    }
+    
+    func getProperSize() -> Size {
+        if let sizeX = sizes.first(where: { $0.type == "x"}) {
+            return sizeX
+        } else if let fallSize = sizes.last {
+            return fallSize
+        } else {
+            return Size(height: 0, url: "wrong image", type: "wrong image", width: 0)
+        }
+    }
+}
+
+protocol ProfileRepresentable {
+    var id: Int { get }
+    var name: String { get }
+    var photo: String { get }
+}
+
+struct ProfileItem: Codable, ProfileRepresentable {
+    let id: Int
+    let firstName: String
+    let lastName: String
+    let photo100: String
+    
+    var name: String { return firstName + " " + lastName }
+    
+    var photo: String { return photo100 }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case photo100 = "photo_100"
+    }
+}
+
+struct GroupItem: Codable, ProfileRepresentable {
+    let id: Int
+    let name: String
+    let photo100: String
+    
+    var photo: String { return photo100 }
+    
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case photo100 = "photo_100"
     }
 }
 
@@ -330,7 +396,7 @@ struct Views: Codable {
 struct Profile: Codable {
     let id, sex: Int
     let photo50, photo100: String
-    let onlineInfo: OnlineInfo
+//    let onlineInfo: OnlineInfo
     let online: Int
     let deactivated: String?
     let firstName, lastName: String
@@ -342,7 +408,7 @@ struct Profile: Codable {
         case id, sex
         case photo50 = "photo_50"
         case photo100 = "photo_100"
-        case onlineInfo = "online_info"
+//        case onlineInfo = "online_info"
         case online, deactivated
         case firstName = "first_name"
         case lastName = "last_name"

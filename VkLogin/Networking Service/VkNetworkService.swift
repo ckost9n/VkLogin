@@ -18,7 +18,8 @@ enum VkMethod: String {
 
 class VkNetworkService {
     
-    func getNews(completion: @escaping ([Profile], [Group], [NewsItemNew]) -> Void) {
+    func getNewsAl(completion: @escaping (ResponseData) -> Void) {
+        
         let urlPath = "https://api.vk.com/method/" + VkMethod.newsFeed.rawValue
         let parameters: Parameters = [
             "access_token": Constants.token,
@@ -26,8 +27,23 @@ class VkNetworkService {
             "filters": "post, photo"
         ]
         
-        var profileArr: [Profile] = []
-        var groupArr: [Group] = []
+        AF.request(urlPath, parameters: parameters).responseDecodable(of: NewsFeed.self) { data in
+//                guard let data = response.value?.items else { return }
+            guard let response = data.value?.response else { return }
+            completion(response)
+        }
+    }
+    
+    func getNews(completion: @escaping ([ProfileItem], [GroupItem], [NewsItemNew]) -> Void) {
+        let urlPath = "https://api.vk.com/method/" + VkMethod.newsFeed.rawValue
+        let parameters: Parameters = [
+            "access_token": Constants.token,
+            "v": "5.131",
+            "filters": "post, photo"
+        ]
+        
+        var profileArr: [ProfileItem] = []
+        var groupArr: [GroupItem] = []
         var newsArr: [NewsItemNew] = []
         
         AF.request(urlPath, method: .get, parameters: parameters).response { data in
@@ -49,10 +65,12 @@ class VkNetworkService {
                         newsArr = items[0]
                         print(items[0][0].postId)
                     case "groups":
-                        guard let groups = try? JSONDecoder().decode([[Group]].self, from: categoryData) else { return }
+                        guard let groups = try? JSONDecoder().decode([[GroupItem]].self, from: categoryData) else { return }
+                        print(groups)
                         groupArr = groups[0]
                     case "profiles":
-                        guard let profile = try? JSONDecoder().decode([[Profile]].self, from: categoryData) else { return }
+                        guard let profile = try? JSONDecoder().decode([[ProfileItem]].self, from: categoryData) else { return }
+                        print(profile)
                         profileArr = profile[0]
                     default:
                         break
@@ -66,11 +84,7 @@ class VkNetworkService {
             }
         }
         
-//        AF.request(urlPath, parameters: parameters).responseDecodable(of: NewsFeed.self) { data in
-////                guard let data = response.value?.items else { return }
-//            guard let response = data.value?.response else { return }
-//            completion(response)
-//        }
+        
         
     }
     
