@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NewsHeaderCell: UITableViewCell {
     
@@ -35,14 +36,15 @@ class NewsHeaderCell: UITableViewCell {
         setConstraints()
     }
     
-    func configure(model: NewsItem) {
+    func configure(model: FeedViewModel.Cell) {
         
-        let avatarString = "Avatars/" + model.avatarString
-        let avatar = UIImage(named: avatarString)
-        avatarImageView.image = avatar
+        let urlAvatar = URL(string: model.avatarUrlString)
+//        let avatar = UIImage(named: "Thumbnails/0")
+        let proccecor = RoundCornerImageProcessor(cornerRadius: 2)
+        avatarImageView.kf.setImage(with: urlAvatar, options: [.processor(proccecor)])
         
-        autorNameLabel.text = model.autorName
-
+        autorNameLabel.text = String(model.name)
+        dateLabel.text = model.date
     }
     
     private func setupViews() {

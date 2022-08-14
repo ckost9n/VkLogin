@@ -19,6 +19,8 @@
 		3C58F512289D1C7B00778BAC /* NewsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C58F50B289D1C7B00778BAC /* NewsModels.swift */; };
 		3C58F513289D1C7B00778BAC /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C58F50C289D1C7B00778BAC /* NewsViewController.swift */; };
 		3C58F514289D1C7B00778BAC /* NewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C58F50D289D1C7B00778BAC /* NewsInteractor.swift */; };
+		3C58F517289D4A1A00778BAC /* NewsFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C58F516289D4A1A00778BAC /* NewsFeed.swift */; };
+		3C58F519289EA07000778BAC /* NewsCentralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C58F518289EA06F00778BAC /* NewsCentralCell.swift */; };
 		3C790C8F286CDDA2007AA1C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790C8E286CDDA2007AA1C6 /* AppDelegate.swift */; };
 		3C790C91286CDDA2007AA1C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790C90286CDDA2007AA1C6 /* SceneDelegate.swift */; };
 		3C790C98286CDDA7007AA1C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C790C97286CDDA7007AA1C6 /* Assets.xcassets */; };
@@ -61,6 +63,8 @@
 		3C58F50B289D1C7B00778BAC /* NewsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModels.swift; sourceTree = "<group>"; };
 		3C58F50C289D1C7B00778BAC /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		3C58F50D289D1C7B00778BAC /* NewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsInteractor.swift; sourceTree = "<group>"; };
+		3C58F516289D4A1A00778BAC /* NewsFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeed.swift; sourceTree = "<group>"; };
+		3C58F518289EA06F00778BAC /* NewsCentralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCentralCell.swift; sourceTree = "<group>"; };
 		3C790C8B286CDDA2007AA1C6 /* VkLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C790C8E286CDDA2007AA1C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C790C90286CDDA2007AA1C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,7 +151,6 @@
 		3C790C8D286CDDA2007AA1C6 /* VkLogin */ = {
 			isa = PBXGroup;
 			children = (
-				3C58F507289D1C5F00778BAC /* News Module */,
 				3C790CA2286CDEC1007AA1C6 /* App */,
 				3C3ED91328741151001A6865 /* Networking Service */,
 				3C9BB9F02870D370005F5F27 /* Models */,
@@ -190,6 +193,7 @@
 				3C9BBA5A2872F9DD005F5F27 /* SliderViewController.swift */,
 				3C9BB9FE28717229005F5F27 /* MyGroupViewController.swift */,
 				3C9BBA002871728D005F5F27 /* AllGroupViewController.swift */,
+				3C58F507289D1C5F00778BAC /* News Module */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -201,6 +205,7 @@
 				3C9BB9F12870D391005F5F27 /* Group.swift */,
 				3C3ED920287468CF001A6865 /* Photo.swift */,
 				3C9BB9F32870D39A005F5F27 /* NewsItem.swift */,
+				3C58F516289D4A1A00778BAC /* NewsFeed.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 				3C9BB9F62870D863005F5F27 /* FriendCell.swift */,
 				3C9BB9FC2870F090005F5F27 /* GroupCell.swift */,
 				3CA5FDAF289713C000FF59BC /* NewsHeaderCell.swift */,
+				3C58F518289EA06F00778BAC /* NewsCentralCell.swift */,
 				3CA5FDB12897264B00FF59BC /* NewsFooterCell.swift */,
 				3C9BBA582872EF5C005F5F27 /* PhotosCell.swift */,
 				3C9BBA5C28734914005F5F27 /* SliderPhotoCell.swift */,
@@ -331,6 +337,7 @@
 				3C9BBA5D28734914005F5F27 /* SliderPhotoCell.swift in Sources */,
 				3C3ED91828741612001A6865 /* VKAuthViewController.swift in Sources */,
 				3C3ED91C2874391E001A6865 /* VkNetworkService.swift in Sources */,
+				3C58F519289EA07000778BAC /* NewsCentralCell.swift in Sources */,
 				3C9BB9F22870D391005F5F27 /* Group.swift in Sources */,
 				3CA5FDB22897264B00FF59BC /* NewsFooterCell.swift in Sources */,
 				3C9BB9E82870C6D3005F5F27 /* FriendsViewController.swift in Sources */,
@@ -342,6 +349,7 @@
 				3C58F510289D1C7B00778BAC /* NewsWorker.swift in Sources */,
 				3C9BB9E62870C4DC005F5F27 /* MainTabBarCotroller.swift in Sources */,
 				3C9BB9F42870D39A005F5F27 /* NewsItem.swift in Sources */,
+				3C58F517289D4A1A00778BAC /* NewsFeed.swift in Sources */,
 				3C790CB3286CE43E007AA1C6 /* UILabel + Extesion.swift in Sources */,
 				3C9BBA5B2872F9DD005F5F27 /* SliderViewController.swift in Sources */,
 				3C790CAF286CE423007AA1C6 /* UITextField + Extension.swift in Sources */,

@@ -9,9 +9,40 @@ import Foundation
 
 enum ItemsOfCell {
     case top
-    case text
-    case image
+    case central
+//    case text
+//    case image
     case bottom
+}
+
+enum CenterOfCell {
+    case empty
+    case text
+    case photo
+    case textPlusPhoto
+}
+
+protocol FeedCellViewModel {
+    var avatarUrlString: String { get }
+    var name: String { get }
+    var date: String { get }
+    var text: String? { get }
+    var likes: String { get }
+    var comments: String { get }
+    var shares: String { get }
+    var views: String { get }
+    
+    var photoAttachments: FeedCellPhotoAttachmentsViewModel? { get }
+    
+    var count: Int { get }
+    
+    func getInfoCell(index: Int) -> ItemsOfCell?
+}
+
+protocol FeedCellPhotoAttachmentsViewModel {
+    var photoUrlString: String? { get }
+    var width: Int { get }
+    var height: Int { get }
 }
 
 struct NewsItem {
@@ -31,15 +62,19 @@ struct NewsItem {
 //        return 4
     }
     
-    func getInfoCell(index: Int) -> ItemsOfCell? {
-        switch index {
-        case 0: return .top
-        case 1: return text != nil ? .text : .image
-        case 2: return imageString != nil ? .image : .bottom
-        case 3: return .bottom
-        default: return nil
+    func checkCentral() -> CenterOfCell {
+        if text == nil, imageString == nil {
+            return .empty
+        } else if imageString == nil {
+            return .text
+        } else if text == nil {
+            return .photo
+        } else {
+            return .textPlusPhoto
         }
+        
     }
+
     
     static func getNews(count: Int) -> [NewsItem] {
         

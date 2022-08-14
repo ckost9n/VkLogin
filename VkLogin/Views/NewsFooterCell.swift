@@ -59,6 +59,13 @@ class NewsFooterCell: UITableViewCell {
         setConstraints()
     }
     
+    func configure(model: FeedViewModel.Cell) {
+        likesButton.setTitle(model.likes, for: .normal)
+        commentButton.setTitle(model.comments, for: .normal)
+        repostButton.setTitle(model.shares, for: .normal)
+        viewsButton.setTitle(model.views, for: .normal)
+    }
+    
     private func setupViews() {
         mainStackView = UIStackView(views: [
             likesButton,

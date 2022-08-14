@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol NewsDisplayLogic: AnyObject {
     func displayData(viewModel: News.Model.ViewModel.ViewModelData)
@@ -17,8 +18,9 @@ class NewsViewController: UIViewController, NewsDisplayLogic {
     var interactor: NewsBusinessLogic?
     var router: (NSObjectProtocol & NewsRoutingLogic)?
     
-    private var news: [NewsItem] = []
+    private var news: [NewsItemNew] = []
     private var tableView = UITableView()
+    private var feedViewModel = FeedViewModel.init(cells: [])
     
     // MARK: Setup
     
@@ -40,6 +42,10 @@ class NewsViewController: UIViewController, NewsDisplayLogic {
     
     // MARK: View lifecycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        interactor?.makeRequest(request: .getNews)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,7 +53,7 @@ class NewsViewController: UIViewController, NewsDisplayLogic {
         setupViews()
         setConstraints()
         
-        interactor?.makeRequest(request: .getNews)
+        
         
     }
     
@@ -56,7 +62,8 @@ class NewsViewController: UIViewController, NewsDisplayLogic {
         title = "Новости"
         
         tableView.register(NewsHeaderCell.self, forCellReuseIdentifier: Constants.newsHeaderCell.rawValue)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.newsCell.rawValue)
+        tableView.register(NewsCentralCell.self, forCellReuseIdentifier: Constants.newsCentralCell.rawValue)
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.newsCell.rawValue)
         tableView.register(NewsFooterCell.self, forCellReuseIdentifier: Constants.newsFooterCell.rawValue)
         setDelegates()
         
@@ -71,9 +78,11 @@ class NewsViewController: UIViewController, NewsDisplayLogic {
     }
     
     func displayData(viewModel: News.Model.ViewModel.ViewModelData) {
+        
         switch viewModel {
         case .displayNews(news: let newsData):
-            news = newsData
+//            news = newsData
+            feedViewModel = newsData
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
             }
@@ -92,38 +101,36 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return news.count
+        return feedViewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news[section].count
+        return feedViewModel.cells[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.newsCell.rawValue, for: indexPath)
-        var content = cell.defaultContentConfiguration()
         
-        let model = news[indexPath.section]
-        guard let index = model.getInfoCell(index: indexPath.row) else { return UITableViewCell() }
+        let newModel = feedViewModel.cells[indexPath.section]
+        guard let newIndex = newModel.getInfoCell(index: indexPath.row) else { return UITableViewCell() }
         
-        switch index {
-            
+        switch newIndex {
+
         case .top:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.newsHeaderCell.rawValue, for: indexPath) as! NewsHeaderCell
-            cell.configure(model: model)
+            cell.configure(model: newModel)
             return cell
-        case .text:
-            content.text = model.text
-        case .image:
-            content.image = UIImage(named: "Thumbnails/" + (model.imageString ?? "0"))
+
+        case .central:
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.newsCentralCell.rawValue, for: indexPath) as! NewsCentralCell
+            cell.configure(model: newModel)
+            return cell
+
         case .bottom:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.newsFooterCell.rawValue, for: indexPath) as! NewsFooterCell
+            cell.configure(model: newModel)
             return cell
         }
         
-        cell.contentConfiguration = content
-        
-        return cell
     }
     
     
