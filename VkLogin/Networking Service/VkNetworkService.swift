@@ -47,45 +47,47 @@ class VkNetworkService {
         var newsArr: [NewsItemNew] = []
         
         AF.request(urlPath, method: .get, parameters: parameters).response { data in
-   
+            
             guard let myData = data.value, let myData = myData else { return }
             
-            guard let dictResponse = try! JSONSerialization.jsonObject(with: myData, options: .fragmentsAllowed) as? [String: Any] else { return }
-            guard let dataResponse = dictResponse["response"] as? [String: Any] else { return }
-            let dispatchGroup = DispatchGroup()
-
-            for dataItem in dataResponse {
-                guard let categoryData = try? JSONSerialization.data(withJSONObject: [dataItem.value]) else { return }
+            DispatchQueue.global().async { [weak self] in
+                guard let self = self else { return }
                 
-//                dispatchGroup.enter()
-                DispatchQueue.global().async(group: dispatchGroup) {
-                    switch dataItem.key {
-                    case "items":
-                        guard let items = try? JSONDecoder().decode([[NewsItemNew]].self, from: categoryData) else { return }
-                        newsArr = items[0]
-                        print(items[0][0].postId)
-                    case "groups":
-                        guard let groups = try? JSONDecoder().decode([[GroupItem]].self, from: categoryData) else { return }
-                        print(groups)
-                        groupArr = groups[0]
-                    case "profiles":
-                        guard let profile = try? JSONDecoder().decode([[ProfileItem]].self, from: categoryData) else { return }
-                        print(profile)
-                        profileArr = profile[0]
-                    default:
-                        break
-                    }
-//                    dispatchGroup.leave()
+                let json = (try? JSONSerialization.jsonObject(with: myData, options: .fragmentsAllowed) as? [String: Any]) ?? [:]
+                
+                let responseData = (json["response"] as? [String: Any]) ?? [:]
+                
+                let items = responseData["items"]
+                let profiles = responseData["profiles"]
+                let groups = responseData["groups"]
+                
+                let itemsData = (try? JSONSerialization.data(withJSONObject: items as Any, options: .fragmentsAllowed)) ?? Data()
+                let profilesData = (try? JSONSerialization.data(withJSONObject: profiles as Any, options: .fragmentsAllowed)) ?? Data()
+                let groupsData = (try? JSONSerialization.data(withJSONObject: groups as Any, options: .fragmentsAllowed)) ?? Data()
+                
+                let dispatchGroup = DispatchGroup()
+                
+                dispatchGroup.enter()
+                dispatchGroup.enter()
+                dispatchGroup.enter()
+                
+                self.asyncParse(data: itemsData, group: dispatchGroup) { (model: [NewsItemNew]) in
+                    newsArr = model
+                }
+                
+                self.asyncParse(data: profilesData, group: dispatchGroup) { (model: [ProfileItem]) in
+                    profileArr = model
+                }
+                
+                self.asyncParse(data: groupsData, group: dispatchGroup) { (model: [GroupItem]) in
+                    groupArr = model
+                }
+                
+                dispatchGroup.notify(queue: .global()) {
+                    completion(profileArr, groupArr, newsArr)
                 }
             }
-            
-            dispatchGroup.notify(queue: DispatchQueue.main) { 
-                completion(profileArr, groupArr, newsArr)
-            }
         }
-        
-        
-        
     }
     
     func getData<T: Decodable>(metod: VkMethod, userId: String? = nil, completion: @escaping ([T]) -> Void) {
@@ -115,6 +117,15 @@ class VkNetworkService {
             completion(data)
         }
         
+    }
+    
+    private func asyncParse<T: Decodable> (data: Data, group: DispatchGroup, completion: @escaping (T) -> Void) {
+        DispatchQueue.global().async {
+            if let parseModel = try? JSONDecoder().decode(T.self, from: data) {
+                completion(parseModel)
+            }
+            group.leave()
+        }
     }
     
 }
